@@ -1,7 +1,15 @@
+h1 {
+  margin-bottom: 38px;
+}
+
 .App {
+  background-color: #fff;
+  border: 1px solid #97dee7;
   text-align: center;
   width: 75%;
   margin: 0 auto;
+  padding: 16px;
+  padding-bottom: 52px;
 }
 
 .App_Grid {
@@ -16,5 +24,22 @@
 
 .App_Grid, .App_Grid  td, .App_Grid  tr {
   border-collapse: collapse;
-  border: solid 1px black;
+  border: solid 1px #333;
+}
+
+.App_Keyboard {
+  margin: 32px auto 0 auto;
+}
+
+.App_Keyboard_Button {
+  background-color: #eee;
+  border: 1px solid #888;
+  padding: 12px;
+  min-width: 50px;
+  border-radius: 2px;
+}
+
+.App_Keyboard_Button:hover {
+  background-color: #fefefe;
+  cursor: pointer;
 }
