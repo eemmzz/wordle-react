@@ -5,8 +5,9 @@ import Grid from './components/Grid';
 import Keyboard from './components/Keyboard';
 
 function App() {
-  const initialGrid = ['.....','.....','.....','.....','.....'];
+  const correctWord = 'pilot'; // todo: pull randomly from dictionary
   const maxGuesses = 4;
+  const initialGrid = ['.....','.....','.....','.....','.....'];
 
   const [guessedWords, setGuessedWords] = useState(initialGrid);
   const [guessCount, setGuessCount] = useState(0);
@@ -21,17 +22,30 @@ function App() {
     const guessedWordsNew = guessedWords;
     let currentGuess = guessedWordsNew[guessCount].replaceAll('.', '');
 
+    // handle enter key only if full word is submitted
+    if (keyPressed === 'ENTER' && currentGuess.length === 5) {
+      // todo: check if guess is correct
+      const correctGuess = false;
+
+      if (!correctGuess) {
+        if (guessCount < maxGuesses) {
+          // still able to make guesses so increment count
+          setGuessCount(guessCount + 1);
+        } else {
+          console.log('todo: game over!');
+        }
+      }
+    }
+
     // handle delete key
     if (keyPressed === 'DEL') {
       currentGuess = currentGuess.slice(0, -1);
     }
 
     // handle letters
-    if (currentGuess.length < 5 && keyPressed !== 'DEL') {
+    if (currentGuess.length < 5 && keyPressed !== 'DEL' && keyPressed !== 'ENTER') {
       // word is less than 5 letters so append input
       currentGuess += keyPressed;
-    } else {
-      console.log('TODO');
     }
 
     // re-enter padding characters for render if required
