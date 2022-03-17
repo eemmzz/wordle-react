@@ -21,7 +21,13 @@ function App() {
     const guessedWordsNew = guessedWords;
     let currentGuess = guessedWordsNew[guessCount].replaceAll('.', '');
 
-    if (currentGuess.length < 5) {
+    // handle delete key
+    if (keyPressed === 'DEL') {
+      currentGuess = currentGuess.slice(0, -1);
+    }
+
+    // handle letters
+    if (currentGuess.length < 5 && keyPressed !== 'DEL') {
       // word is less than 5 letters so append input
       currentGuess += keyPressed;
     } else {
