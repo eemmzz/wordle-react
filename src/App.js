@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Confetti from 'react-confetti';
 
 import './App.css';
 import Grid from './components/Grid';
@@ -12,6 +13,7 @@ function App() {
   const [guessedWords, setGuessedWords] = useState(initialGrid);
   const [guessCount, setGuessCount] = useState(0);
   const [disableKeys, setDisableKeys] = useState(false);
+  const [confetti, setConfetti] = useState(false);
 
   const keyPressedHandler = (event) => {
     const keyPressed = event.target.id;
@@ -38,6 +40,10 @@ function App() {
       } else {
         console.log('yay, you win!');
         setDisableKeys(true);
+        setConfetti(true);
+        setTimeout(() => {
+          setConfetti(false);
+        }, 10000);
       }
     }
 
@@ -66,6 +72,9 @@ function App() {
   return (
     <div className="App">
       <h1>Wordle React</h1>
+      {confetti &&
+        <Confetti />
+      }
       <Grid guesses={guessedWords} />
       <Keyboard disableKeys={disableKeys} keyPressedEvent={keyPressedHandler} />
     </div>
