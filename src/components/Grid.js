@@ -9,8 +9,8 @@ const Grid = ({guesses}) => {
 
             return <tr key={id} id={id}>
               {
-                letters.map((letter) => {
-                  return <td>{letter !== '.' ? letter : ' '}</td>
+                letters.map((letter, index) => {
+                  return <td key={`${id}-${index}`}>{letter !== '.' ? letter : ' '}</td>
                 })
               }
               </tr>
