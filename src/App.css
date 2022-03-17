@@ -39,7 +39,7 @@ h1 {
   border-radius: 2px;
 }
 
-.App_Keyboard_Button:hover {
+.App_Keyboard_Button:hover:enabled {
   background-color: #fefefe;
   cursor: pointer;
 }

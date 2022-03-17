@@ -11,6 +11,7 @@ function App() {
 
   const [guessedWords, setGuessedWords] = useState(initialGrid);
   const [guessCount, setGuessCount] = useState(0);
+  const [disableKeys, setDisableKeys] = useState(false);
 
   const keyPressedHandler = (event) => {
     const keyPressed = event.target.id;
@@ -24,8 +25,7 @@ function App() {
 
     // handle enter key only if full word is submitted
     if (keyPressed === 'ENTER' && currentGuess.length === 5) {
-      // todo: check if guess is correct
-      const correctGuess = false;
+      const correctGuess = currentGuess === correctWord.toUpperCase();
 
       if (!correctGuess) {
         if (guessCount < maxGuesses) {
@@ -33,7 +33,11 @@ function App() {
           setGuessCount(guessCount + 1);
         } else {
           console.log('todo: game over!');
+          setDisableKeys(true);
         }
+      } else {
+        console.log('yay, you win!');
+        setDisableKeys(true);
       }
     }
 
@@ -63,7 +67,7 @@ function App() {
     <div className="App">
       <h1>Wordle React</h1>
       <Grid guesses={guessedWords} />
-      <Keyboard keyPressedEvent={keyPressedHandler} />
+      <Keyboard disableKeys={disableKeys} keyPressedEvent={keyPressedHandler} />
     </div>
   );
 }
