@@ -1,0 +1,30 @@
+const dictionary = [
+  'thing',
+  'chime',
+  'magma',
+  'tango',
+  'twist',
+  'cheek',
+  'angel',
+  'angle',
+  'shade',
+  'mango',
+  'fizzy',
+  'squid',
+  'about',
+  'anger',
+  'brown',
+  'chart',
+  'quiet',
+  'queen',
+  'drama',
+  'dress',
+  'craft',
+  'watch',
+  'storm',
+  'robin',
+  'cloud',
+  'photo'
+];
+
+export default dictionary;
